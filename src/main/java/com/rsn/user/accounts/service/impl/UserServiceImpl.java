@@ -56,16 +56,5 @@ public class UserServiceImpl implements UserService {
         return List.of();
     }
 
-    @Override
-    public UserResponseWithCredentials getUserCredentialsByUsername(String username) {
-        User user = userRepository.findByName(username);
-        UserResponse userResponse = new UserResponse();
-        userResponse.setName(user.getName());
-        userResponse.setAccount(new AccountDto());
-        userResponse.getAccount().setBalance(user.getAccount().getBalance());
-        return new UserResponseWithCredentials(
-                userResponse, user.getPassword());
-    }
-
 
 }
